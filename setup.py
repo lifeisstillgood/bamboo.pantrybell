@@ -33,7 +33,7 @@ def main():
           description='Co-ordinating Jenkins Jobs',
           long_description='see description',
           install_requires=[
-              ,"flask >= 0.8"
+              "flask >= 0.8"
               ,"rhaptos2.common"
                            ],
           package_data={'pantrybell': ['templates/*.*', 'static/*.*', 'version.txt'],
