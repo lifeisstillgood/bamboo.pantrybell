@@ -35,6 +35,7 @@ def main():
           install_requires=[
               "flask >= 0.8"
               ,"rhaptos2.common"
+              ,"requests"
                            ],
           package_data={'pantrybell': ['templates/*.*', 'static/*.*', 'version.txt'],
                         },
