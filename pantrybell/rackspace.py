@@ -111,9 +111,8 @@ def reimage_server(servername):
     "bare-server-log":("11318780","10158866") 
     }
 
-
     if servername not in detail.keys():
-        raise RackspaceMgmtError("Unknown server ref asked for reinstall")
+        raise RackspaceMgmtError("Unknown server ref (%s) passed in to reimage" % servername)
 
     imageid, serverid = detail[servername]
     print rebuild_server(imageid, serverid, authtoken, mgmtURL, hdrs)
