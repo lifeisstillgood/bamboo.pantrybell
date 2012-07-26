@@ -23,6 +23,7 @@ Then re-image...
 
 import requests
 import sys
+import json 
 from rhaptos2.common import conf
 confd = conf.get_config("pantrybell")
 
@@ -53,14 +54,14 @@ proxy_dict = None
 def discover_images():
 
     r = requests.get(mgmtURL + "/servers", headers=hdrs)
-    print r
-    print r.headers
-    print r.text
+    j = json.loads(r.text)
+    for svr in j['servers']:
+        print svr['id'], svr['name']
 
     r = requests.get(mgmtURL + "/images", headers=hdrs)
-    print r
-    print r.headers
-    print r.text
+    j = json.loads(r.text)
+    for svr in j['images']:
+        print svr['id'], svr['name']
 
 
 def rebuild_server(imageid, serverid, authtoken, mgmtURL, hdrs):
@@ -107,7 +108,7 @@ def reimage_server(servername):
     detail= { #name:(imageid,serverid)
     "bare-server-jenkins": ("11251010","10158867"),
     "www-baseserver": ("11313960","10148905"),
-    "bare-server-log":("11251013","10158866")
+    "bare-server-log":("11318780","10158866") 
     }
 
 
@@ -122,5 +123,5 @@ def reimage_server(servername):
 if __name__ == '__main__':
     mgmtURL, authtoken =  get_auth()
     hdrs = {"X-Auth-Token": authtoken}
-    discover_images()
+    r = discover_images()
 
