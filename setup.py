@@ -14,7 +14,7 @@ def get_version():
        Making very broad assumptions about the 
        existence of files '''
     
-    v = open('pantrybell/version.txt').read().strip()
+    v = open('bamboo/pantrybell/version.txt').read().strip()
     return v
 
 
@@ -22,13 +22,14 @@ def get_version():
 
 def main():
 
-    setup(name='pantrybell',
+    setup(name='bamboo.pantrybell',
           version=get_version(),
-          packages=['pantrybell'
+          packages=['bamboo.pantrybell'
                    ],
+          namespace_packages = ['bamboo'],
           author='Paul Brian',
           author_email='paul@mikadosoftware.com',
-          url='https://github.com/lifeistillgood/pantrybell',
+          url='https://github.com/lifeistillgood/bamboo.pantrybell',
           license='BSD 3 Clause',
           description='Co-ordinating Jenkins Jobs',
           long_description='see description',
@@ -37,7 +38,9 @@ def main():
               ,"rhaptos2.common"
               ,"requests"
                            ],
-          package_data={'pantrybell': ['templates/*.*', 'static/*.*', 'version.txt'],
+          package_data={'bamboo.pantrybell': ['templates/*.*', 
+                                              'static/*.*', 
+                                              'version.txt'],
                         },
 
           
